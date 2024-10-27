@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.helbjava.springsample.dto.EmployeeDto;
 import com.helbjava.springsample.entity.EmployeeEntity;
+import com.helbjava.springsample.exception.ResourceNotFoundException;
 import com.helbjava.springsample.mapper.EmployeeMapper;
 import com.helbjava.springsample.repository.EmployeeRepository;
 import com.helbjava.springsample.service.EmployeeService;
@@ -20,5 +21,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeEntity employee = EmployeeMapper.mapToEmployeeEntity(employeeDto);
         EmployeeEntity savedEmployee = this.employeeRepository.save(employee);
         return EmployeeMapper.mapToEmployeeDto(savedEmployee);
+    }
+
+    @Override
+    public EmployeeDto getEmployeeById(Long employeeId) {
+        EmployeeEntity employee = this.employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+
+        return EmployeeMapper.mapToEmployeeDto(employee);
     }
 }

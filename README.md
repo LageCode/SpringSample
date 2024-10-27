@@ -2,6 +2,14 @@
 
 A Spring learning general sample
 
+## Documentation
+
+### REST API
+
+- **REST**: Representational State Transfer. A REST API is an architectural style for an Application Programming Interface (API) that uses HTTP requests to access and use data.
+
+- **API**: Application Programming Interface. An API defines interactions between multiple applications. It specifies the types of requests that can be made, how to execute them, the type of data to use, conventions to follow, and more.
+
 ## Getting started
 
 1. Setup a postgresql database and configure user, password, and database in `/src/main/resources/application.properties` file.
